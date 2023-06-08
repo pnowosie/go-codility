@@ -1,6 +1,7 @@
-// BinaryGap
+// Package iterations
+// Problem BinaryGap
 // Copyright 2009–2023 by Codility Limited
-package solution
+package iterations
 
 var _description = `
 A binary gap within a positive integer N is any maximal sequence of consecutive zeros that is surrounded by ones at both ends in the binary representation of N.
@@ -24,23 +25,22 @@ N is an integer within the range [1..2,147,483,647].
 
 // Code
 func Solution(N int) int {
-    hasGap := false
-    maxGap := 0
+	hasGap := false
+	maxGap := 0
 
-    zeros := 0
-    for ; N>0; N /= 2 {
-        if N%2 == 1 {
-            if hasGap && maxGap < zeros {
-                maxGap = zeros
-            }
-            zeros = 0
-        } else {
-            zeros++
-        }
-        hasGap = hasGap || (N>1 && N%2==1)
-    }
-    return maxGap
+	zeros := 0
+	for ; N > 0; N /= 2 {
+		if N%2 == 1 {
+			if hasGap && maxGap < zeros {
+				maxGap = zeros
+			}
+			zeros = 0
+		} else {
+			zeros++
+		}
+		hasGap = hasGap || (N > 1 && N%2 == 1)
+	}
+	return maxGap
 }
 
 // Helpers
-
